@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t/newscheme.dart';
 import 'package:t/purdas.dart';
+import 'package:t/tk.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home:MyHomePage()
+      home:MyHomePagee()
     );
   }
 }
