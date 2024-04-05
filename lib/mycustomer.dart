@@ -55,53 +55,26 @@ class CustomerScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10,),
-            // Expanded(
-            //   child: ListView.builder(
-            //     itemCount: 3,
-            //       itemBuilder: (context ,index){
-            //     return Card(
-            //       shape: LinearBorder(),
-            //       child: Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           Text(
-            //             name,
-            //             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //           ),
-            //           Text(
-            //             '|',
-            //             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //           ),
-            //           SizedBox(height: 16),
-            //           Text(
-            //             contactNumber,
-            //             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //           ),
-            //           Text(
-            //             '|',
-            //             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //           ),
-            //           SizedBox(height: 16),
-            //           Text(
-            //             city,
-            //             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //           ),
-            //           Text(
-            //             '|',
-            //             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //           ),
-            //           Text(
-            //             "--/--",
-            //             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //           ),
-            //         ],
-            //       ),
-            //     );
-            //   }),
-            // )
           ],
         ),
       ),
     );
   }
 }
+
+// DataTable(
+// columns: [
+// DataColumn(label: Text('Name')),
+// DataColumn(label: Text('Contact Number')),
+// DataColumn(label: Text('City')),
+// ],
+// rows: [
+// DataRow(
+// cells: [
+// DataCell(Text('ajay chauhan')),
+// DataCell(Text('9893072833')),
+// DataCell(Text('Shivpuri')),
+// ],
+// ),
+// ],
+// ),

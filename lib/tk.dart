@@ -1,56 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class MyHomePagee extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
+
+// Simple class to manage app bar title changes
+class AppBarTitleNotifier with ChangeNotifier {
+  String _title = 'Home'; // Default title
+
+  String get title => _title;
+
+  void setTitle(String newTitle) {
+    _title = newTitle;
+    notifyListeners(); // Notify listeners of the change
+  }
 }
 
-class _MyHomePageState extends State<MyHomePagee> {
-  String _selectedOption1 = 'Option 1';
-  String _selectedOption2 = 'Option A';
-
-  List<String> _options1 = ['Option 1', 'Option 2', 'Option 3'];
-  List<String> _options2 = ['Option A', 'Option B', 'Option C'];
-
+class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dropdown Menu Example'),
+        title: Consumer<AppBarTitleNotifier>(
+          builder: (context, appBarTitle, _) => Text(appBarTitle.title),
+        ),
       ),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            DropdownButton<String>(
-              value: _selectedOption1,
-              onChanged: (String? newValue) {
-                setState(() {
-                  _selectedOption1 = newValue!;
-                });
-              },
-              items: _options1.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-            DropdownButton<String>(
-              value: _selectedOption2,
-              onChanged: (String? newValue) {
-                setState(() {
-                  _selectedOption2 = newValue!;
-                });
-              },
-              items: _options2.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-          ],
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SecondScreen(),
+              ),
+            );
+            // Change app bar title when navigating to the second screen
+            Provider.of<AppBarTitleNotifier>(context, listen: false)
+                .setTitle('Second Screen');
+          },
+          child: Text('Go to Second Screen'),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Second Screen'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+            // Change app bar title when navigating back to the main screen
+            Provider.of<AppBarTitleNotifier>(context, listen: false)
+                .setTitle('Home');
+          },
+          child: Text('Go back to Home Screen'),
         ),
       ),
     );
